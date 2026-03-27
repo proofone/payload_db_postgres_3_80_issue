@@ -22,5 +22,23 @@ export const PostsCollection: CollectionConfig = {
         features: ({ defaultFeatures }) => [...defaultFeatures],
       }),
     },
+    {
+      name: 'coverImage',
+      label: {
+        hu: 'Borítókép',
+      },
+      type: 'relationship',
+      relationTo: 'media',
+      filterOptions: {
+        mimeType: { contains: 'image' },
+      },
+      // admin: {
+      //   allowEdit: false,
+      //   components: {
+      //     afterInput: ['/components/admin-image-preview#ImagePreviewField']
+      //   }
+      // },
+      required: true,
+    },
   ],
 }

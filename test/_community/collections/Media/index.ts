@@ -8,7 +8,17 @@ export const MediaCollection: CollectionConfig = {
     create: () => true,
     read: () => true,
   },
-  fields: [],
+  fields: [
+    {
+      name: 'coverReferences',
+      type: 'join',
+      collection: [
+        // 'information-article', 'information-category',
+        'posts',
+      ],
+      on: 'coverImage',
+    },
+  ],
   upload: {
     crop: true,
     focalPoint: true,

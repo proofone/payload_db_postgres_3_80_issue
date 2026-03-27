@@ -1,3 +1,4 @@
+import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { fileURLToPath } from 'node:url'
 import path from 'path'
@@ -13,6 +14,11 @@ const dirname = path.dirname(filename)
 
 export default buildConfigWithDefaults({
   // ...extend config here
+  db: postgresAdapter({
+    pool: {
+      connectionString: process.env.DATABASE_URI || 'postgres://postgres:postgres@postgres/public',
+    },
+  }),
   collections: [PostsCollection, MediaCollection],
   admin: {
     importMap: {
